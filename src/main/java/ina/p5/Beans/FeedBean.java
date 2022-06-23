@@ -3,6 +3,8 @@ package ina.p5.Beans;
 import java.util.ArrayList;
 
 public class FeedBean {
+    String rssFeedURL;
+
     String title;
     String link;
     String description;
@@ -17,7 +19,8 @@ public class FeedBean {
      * @param description of rss feed
      * @param lastBuildDate of rss feed
      */
-    public FeedBean(String title, String link, String description, String lastBuildDate) {
+    public FeedBean(String rssFeedURL, String title, String link, String description, String lastBuildDate) {
+        this.rssFeedURL = rssFeedURL;
         this.title = title;
         this.link = link;
         this.description = description;
@@ -46,7 +49,7 @@ public class FeedBean {
 
     @Override
     public String toString() {
-        return "FeedBean: title=" + title + ", link=" + link + ", description=" + description + ", date=" + lastBuildDate;
+        return "FeedBean: rssURL=" + rssFeedURL + " title=" + title + ", link=" + link + ", description=" + description + ", date=" + lastBuildDate;
     }
 
     @Override
@@ -56,14 +59,14 @@ public class FeedBean {
 
         FeedBean feedBean = (FeedBean) o;
 
-        if (!title.equals(feedBean.title)) return false;
-        return link.equals(feedBean.link);
+        return rssFeedURL.equals(feedBean.rssFeedURL);
     }
 
-    @Override
-    public int hashCode() {
-        int result = title.hashCode();
-        result = 31 * result + link.hashCode();
-        return result;
+    public void setRssFeedURL(String rssFeedURL) {
+        this.rssFeedURL = rssFeedURL;
+    }
+
+    public String getRssFeedURL() {
+        return rssFeedURL;
     }
 }

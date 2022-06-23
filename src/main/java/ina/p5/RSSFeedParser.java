@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class RSSFeedParser {
+    private String rssFeedURL = "";
     private HttpResponse<InputStream> response;
 
     /**
@@ -30,6 +31,8 @@ public class RSSFeedParser {
      * @throws HttpStatusException thrown if status is not 200 - OK
      */
     public RSSFeedParser(String feedUrl) throws HttpStatusException {
+        this.rssFeedURL = feedUrl;
+
         response = getHTTPResponse(feedUrl);
 
         int status = response.statusCode();
@@ -127,7 +130,7 @@ public class RSSFeedParser {
                         }
                     }
                     else if ("item".equals(attribute)) {
-                        feed = new FeedBean(headerTitle, headerLink, headerDescription, headerDate);
+                        feed = new FeedBean(rssFeedURL, headerTitle, headerLink, headerDescription, headerDate);
                         break;
                     }
                 }

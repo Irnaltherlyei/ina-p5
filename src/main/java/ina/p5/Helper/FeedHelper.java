@@ -31,6 +31,8 @@ public class FeedHelper extends HelperBase {
             request.getSession().setAttribute("feedHelper", this);
         }
 
+        feeds.clear();
+
         LoginHelper loginHelper = (LoginHelper) request.getSession().getAttribute("loginHelper");
         if(loginHelper == null || loginHelper.getUser() == null){
             // User is not logged in
@@ -60,10 +62,9 @@ public class FeedHelper extends HelperBase {
             }
 
             for (String feedUrl : rssList) {
-                //System.out.println(feedUrl);
                 RSSFeedParser parser = new RSSFeedParser(feedUrl);
                 FeedBean feed = parser.readFeed();
-                //System.out.println(feed.getLink());
+
                 if(!feeds.contains(feed)){
                     feeds.add(feed);
                 }
