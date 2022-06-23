@@ -14,6 +14,7 @@
           <element id="module-output" name="ina-p5" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.jsoup:jsoup:1.15.1" />
           <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.29" />
           <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.19.4" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.6.1.Final" />

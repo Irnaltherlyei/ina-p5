@@ -1,6 +1,8 @@
 package ina.p5.Beans;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @NamedQuery(name = "User.byName", query = "SELECT u FROM UserEntity u where u.username= ?1")
@@ -9,9 +11,13 @@ import javax.persistence.*;
 public class UserEntity {
     @Id
     @Column(name = "username")
+    @NotBlank(message = "Bitte gib einen Usernamen ein!")
+    @Size(min = 3, max = 16, message = "Der Username besteht aus 3-16 Zeichen!")
     private String username;
     @Basic
     @Column(name = "password")
+    @NotBlank(message = "Bitte gib ein Passwort ein!")
+    @Size(min = 3, max = 32, message = "Das Passwort muss zwischen 3 und 32 Zeichen haben!")
     private String password;
 
     public String getUsername() {
